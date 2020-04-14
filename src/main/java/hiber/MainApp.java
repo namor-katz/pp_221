@@ -20,11 +20,14 @@ public class MainApp {
       userService.add(new User("User2", "Lastname2", "user2@mail.ru"));
       userService.add(new User("User3", "Lastname3", "user3@mail.ru"));
       userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
-      userService.add(new User("User5", "SuperLasname5", "user5@gmail.com", new Car("Volkswagen", 568)));
+
 
       CarService carService = context.getBean((CarService.class));
       carService.add(new Car("ladda", 586));
+      carService.add(new Car("Volkswagen", 777, new User("Arn", "Sw", "ar@gmail.com")));
 
+      User userT = userService.getUserByCar();
+      System.out.println("имя владельца " + userT.getLastName() + " а мыло " + userT.getEmail());
 
       List<User> users = userService.listUsers();
       for (User user : users) {

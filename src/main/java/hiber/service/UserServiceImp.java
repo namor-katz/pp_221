@@ -1,6 +1,7 @@
 package hiber.service;
 
 import hiber.dao.UserDao;
+import hiber.model.Car;
 import hiber.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,6 @@ import java.util.List;
 @Service
 public class UserServiceImp implements UserService {
 
-   //SELECT u.name, u.last_name FROM users u INNER JOIN cars c ON u.car_id = c.id WHERE c.name = "Volkswagen" AND series = "568";
    @Autowired
    private UserDao userDao;
 
@@ -26,4 +26,8 @@ public class UserServiceImp implements UserService {
       return userDao.listUsers();
    }
 
+   @Transactional
+   public User getUserByCar() {
+      return  userDao.getUserByCar();
+   }
 }
