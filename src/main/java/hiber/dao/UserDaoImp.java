@@ -1,6 +1,5 @@
 package hiber.dao;
 
-import hiber.model.Car;
 import hiber.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,15 +29,22 @@ public class UserDaoImp implements UserDao {
       return query.getResultList();
    }
 
-   public User getUserByCar() {
+   public User getUserByCar(String name, int series) {
       //SELECT u.name, u.last_name FROM users u INNER JOIN cars c ON u.car_id = c.id WHERE c.name = "Volkswagen" AND series = "568";
       List users = new ArrayList();
-      String hql = "select c.user_link FROM Car c fetch all properties";
+      String hql = "select c.user_link FROM Car c WHERE c.name = :name AND c.series = :series";
+
       Session session = sessionFactory.getCurrentSession();
       Query query = session.createQuery(hql);
-      User user = (User) query.list().get(0);
+      query.setParameter("name", name);
+      query.setParameter("series", series);
 
-      return user;
+      users = query.list();
+      if (users.size() > 0) {
+         return (User) users.get(0);
+      }
+      else {
+         return new User("ни имени...", "ни фамилии...", "ни мейла...");
+      }
    }
-
 }

@@ -26,7 +26,7 @@ public class MainApp {
       carService.add(new Car("ladda", 586));
       carService.add(new Car("Volkswagen", 777, new User("Arn", "Sw", "ar@gmail.com")));
 
-      User userT = userService.getUserByCar();
+      User userT = userService.getUserByCar("Volkswagen", 777);
       System.out.println("имя владельца " + userT.getLastName() + " а мыло " + userT.getEmail());
 
       List<User> users = userService.listUsers();

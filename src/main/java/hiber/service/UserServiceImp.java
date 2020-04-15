@@ -27,7 +27,7 @@ public class UserServiceImp implements UserService {
    }
 
    @Transactional
-   public User getUserByCar() {
-      return  userDao.getUserByCar();
+   public User getUserByCar(String name, int series) {
+      return  userDao.getUserByCar(name, series);
    }
 }
