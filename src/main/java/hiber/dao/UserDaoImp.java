@@ -30,7 +30,6 @@ public class UserDaoImp implements UserDao {
    }
 
    public User getUserByCar(String name, int series) {
-      //SELECT u.name, u.last_name FROM users u INNER JOIN cars c ON u.car_id = c.id WHERE c.name = "Volkswagen" AND series = "568";
       List users = new ArrayList();
       String hql = "select c.user_link FROM Car c WHERE c.name = :name AND c.series = :series";
 
