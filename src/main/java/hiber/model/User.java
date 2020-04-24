@@ -19,12 +19,23 @@ public class User {
    @Column(name = "email")
    private String email;
 
+   @OneToOne(cascade = CascadeType.ALL)
+   @JoinColumn(name="car_link")
+   private Car car_link;
+
    public User() {}
    
    public User(String firstName, String lastName, String email) {
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
+   }
+
+   public User(String firstName, String lastName, String email, Car car_link) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.email = email;
+      this.car_link = car_link;
    }
 
    public Long getId() {

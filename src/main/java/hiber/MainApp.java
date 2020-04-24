@@ -23,10 +23,10 @@ public class MainApp {
 
 
       CarService carService = context.getBean((CarService.class));
-      carService.add(new Car("ladda", 586));
-      carService.add(new Car("Volkswagen", 777, new User("Arn", "Sw", "ar@gmail.com")));
+      carService.add(new Car("ladda", 777));
+      userService.add(new User("Vasja", "Pupkin", "superVasja@ya.ru", new Car("Vaz", 777)));
 
-      User userT = userService.getUserByCar("Volkswagen", 777);
+      User userT = userService.getUserByCar("Vaz", 777);
       System.out.println("имя владельца " + userT.getLastName() + " а мыло " + userT.getEmail());
 
       List<User> users = userService.listUsers();

@@ -31,7 +31,7 @@ public class UserDaoImp implements UserDao {
 
    public User getUserByCar(String name, int series) {
       List users = new ArrayList();
-      String hql = "select c.user_link FROM Car c WHERE c.name = :name AND c.series = :series";
+      String hql = "select u FROM User u WHERE u.car_link.name = :name AND u.car_link.series = :series";
 
       Session session = sessionFactory.getCurrentSession();
       Query query = session.createQuery(hql);
